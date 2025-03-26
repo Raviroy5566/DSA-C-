@@ -37,6 +37,24 @@
         return val;
     }
   }
+int peek(struct stack* sp, int i){
+    int arrayInd = sp->top -i + 1;
+    if(arrayInd < 0){
+        printf("Not a valid position for the stack\n");
+        return -1;
+    }
+    else{
+        return sp->arr[arrayInd];
+    }
+}
+ 
+int stackTop(struct stack* sp){
+    return sp->arr[sp->top];
+}
+ 
+int stackBottom(struct stack* sp){
+    return sp->arr[0];
+}
   int main(){
     struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
     sp->size = 10;
@@ -49,6 +67,8 @@
     push(sp, 32);
     push(sp, 20);
     push(sp, 40);
+       printf("The top most value of this stack is %d\n", stackTop(sp));
+    printf("The bottom most value of this stack is %d\n", stackBottom(sp));
      return 0;
   }
  
